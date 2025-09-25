@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Atmospherer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+
+        #drop_zone {
+            width: 80%;
+            max-width: 700px;
+            border: 3px dashed #444;
+            padding: 40px 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+            transition: background-color 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+        #drop_zone.drag-over {
+            background-color: #2a2a2a;
+            border-color: #777;
+        }
+        .control-box {
+            background-color: #252525;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-family: "SF Mono", "Consolas", "Menlo", monospace;
+            width: 80%;
+            max-width: 700px;
+            margin-top: 15px;
+            border: 1px solid #333;
+        }
+        .control-box h2 {
+            font-weight: 400;
+            font-size: 0.9em;
+            color: #888;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+        .control-item .label { color: #aaa; }
+        .control-item .value { color: #e0e0e0; font-weight: bold; }
+        .control-item .shortcut { color: #666; font-size: 0.8em; }
+        .performance-grid {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            font-size: 0.9em;
+            line-height: 1.7;
+        }
+        .performance-column {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .performance-column h3 {
+            font-weight: 400;
+            font-size: 0.85em;
+            color: #888;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+         #mode-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f0f0f0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Atmospherer</h1>
+
+    <div id="drop_zone">
+        <span id="drop-zone-text">Click here to enable audio, then...<br><br>Drag & Drop a .WAV or .MP3 file here</span>
+    </div>
+
+    <div class="control-box" style="margin-bottom: 20px;">
+        <h2>Atmosphere</h2>
+        <input type="range" id="atmosphere-knob" min="0" max="1000" value="250" style="width: 100%;">
+    </div>
+
+    <div class="control-box">
+        <h2>Knobs</h2>
+        <div id="knobs-container" class="grid-container">
+             </div>
+    </div>
+    
+    <div class="control-box">
+        <h2>Performance</h2>
+        <div id="mode-display">Mode: Normal</div>
+        <div id="performance-container" class="performance-grid">
+            </div>
+    </div>
+
+    <p id="instructions">Waiting for audio file...</p>
+
+    <script src="main.js"></script>
+</body>
+</html>
